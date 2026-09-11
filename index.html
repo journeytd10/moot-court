@@ -330,6 +330,144 @@
     align-self: center;
   }
 
+  /* who this is for */
+  .persona-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 40px;
+  }
+  .persona{
+    background: var(--surface);
+    padding: 24px 20px;
+  }
+  .persona .idx{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--brass);
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+  }
+  .persona h3{font-size: 1rem; margin-bottom: 8px;}
+  .persona p{font-size: 0.85rem;}
+
+  .myth-list{border-top: 1px solid var(--rule);}
+  .myth-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.92rem;
+  }
+  .myth-head{
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .myth{
+    color: var(--text-soft);
+    text-decoration: line-through;
+    text-decoration-color: var(--oxblood);
+    text-decoration-thickness: 1px;
+  }
+  .reality{color: var(--text);}
+  @media (max-width: 680px){
+    .myth-row{grid-template-columns: 1fr; gap: 4px;}
+  }
+
+  /* moot court vs mock trial comparison */
+  .compare-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .compare-col h3{margin-bottom: 16px;}
+  @media (max-width: 680px){
+    .compare-grid{grid-template-columns: 1fr; gap: 32px;}
+  }
+
+  .role-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 32px;
+  }
+  .role-box{
+    background: var(--surface);
+    padding: 28px;
+  }
+  .role-box .idx{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--brass);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 680px){
+    .role-grid{grid-template-columns: 1fr;}
+  }
+
+  /* GBM curriculum list */
+  .curriculum-list{
+    margin-top: 16px;
+    padding-left: 22px;
+    display:grid;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+  }
+  .curriculum-list li::marker{
+    color: var(--brass);
+    font-weight: 600;
+  }
+
+  /* tournament path */
+  .tourney-path{
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .tourney-step{
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 0.98rem;
+    padding: 10px 18px;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .tourney-arrow{color: var(--brass); font-size: 1.1rem;}
+
+  /* tryout process table */
+  .tryout-table{
+    margin-top: 36px;
+    border-top: 1px solid rgba(234,227,211,0.16);
+  }
+  .tt-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(234,227,211,0.16);
+    font-size: 0.9rem;
+    color: rgba(234,227,211,0.85);
+  }
+  .tt-head{
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--surface);
+  }
+  @media (max-width: 680px){
+    .tt-row{grid-template-columns: 1fr; gap: 4px;}
+  }
+
   /* tracks */
   .tracks{
     display:grid;
@@ -482,7 +620,9 @@
     <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">Menu</button>
     <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#whos-it-for">Who It's For</a>
       <a href="#first-gbm">First GBM</a>
+      <a href="#moot-vs-mock">Moot Court 101</a>
       <a href="#case">The Case</a>
       <a href="#tracks">Program</a>
       <a href="#schedule">Schedule</a>
@@ -535,9 +675,70 @@
     </div>
   </section>
 
-  <section id="first-gbm">
+  <section id="whos-it-for">
     <div class="section-head">
       <span class="section-num">II.</span>
+      <h2>Who This Is For</h2>
+    </div>
+    <p class="lede">More people than you'd think. Here's who tends to show up, and the excuses we hear the most.</p>
+    <div class="persona-grid">
+      <div class="persona">
+        <div class="idx">If you...</div>
+        <h3>Want law school</h3>
+        <p>The obvious fit. This is the closest thing to a 1L cold-call you'll get as an undergrad.</p>
+      </div>
+      <div class="persona">
+        <div class="idx">If you...</div>
+        <h3>Study poli sci, IR, or criminal justice</h3>
+        <p>You're already reading the doctrine. This is where you argue it out loud.</p>
+      </div>
+      <div class="persona">
+        <div class="idx">If you...</div>
+        <h3>Did debate or speech in high school</h3>
+        <p>The skill transfers almost directly, just with a judge instead of a timer.</p>
+      </div>
+      <div class="persona">
+        <div class="idx">If you...</div>
+        <h3>Like arguing and being told you're wrong</h3>
+        <p>Half-joking. If getting picked apart and coming back sharper sounds fun, you'll fit right in.</p>
+      </div>
+      <div class="persona">
+        <div class="idx">If you...</div>
+        <h3>Have no idea what any of this is</h3>
+        <p>That's most of us at the first GBM. Come find out.</p>
+      </div>
+    </div>
+    <div class="myth-list">
+      <div class="myth-row myth-head">
+        <div>What people assume</div>
+        <div>What's actually true</div>
+      </div>
+      <div class="myth-row">
+        <div class="myth">"I'm not pre-law."</div>
+        <div class="reality">Most of our members aren't either.</div>
+      </div>
+      <div class="myth-row">
+        <div class="myth">"I've never done debate or mock trial."</div>
+        <div class="reality">There's no acting and no witnesses, just you and an argument.</div>
+      </div>
+      <div class="myth-row">
+        <div class="myth">"I'm not a good public speaker."</div>
+        <div class="reality">That's exactly what the training is for.</div>
+      </div>
+      <div class="myth-row">
+        <div class="myth">"I don't have time for another club."</div>
+        <div class="reality">It's one structured weekly commitment, not an open-ended time sink.</div>
+      </div>
+      <div class="myth-row">
+        <div class="myth">"I'm not a strong legal writer."</div>
+        <div class="reality">The brief writing track teaches the structure step by step, you don't need to already know it.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="first-gbm">
+    <div class="section-head">
+      <span class="section-num">III.</span>
       <h2>First GBM</h2>
     </div>
     <div class="case-card gbm-card">
@@ -560,9 +761,51 @@
     </div>
   </section>
 
+  <section id="moot-vs-mock">
+    <div class="section-head">
+      <span class="section-num">IV.</span>
+      <h2>Moot Court vs. Mock Trial</h2>
+    </div>
+    <p class="lede">People mix these up constantly. Here's the real difference, and why it's the reason we do what we do.</p>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <h3>Mock Trial</h3>
+        <ul class="fact-list">
+          <li><span class="fk">Simulates</span><span class="fv">A trial court, like a jury trial</span></li>
+          <li><span class="fk">Roles</span><span class="fv">Attorneys and witnesses, with acting and character work</span></li>
+          <li><span class="fk">Contests</span><span class="fv">Facts: what happened, and who did it</span></li>
+          <li><span class="fk">Team size</span><span class="fv">Larger, enough people to cover witnesses and attorneys</span></li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h3>Moot Court</h3>
+        <ul class="fact-list">
+          <li><span class="fk">Simulates</span><span class="fv">An appellate court, like the Supreme Court</span></li>
+          <li><span class="fk">Roles</span><span class="fv">Attorneys only, no acting or characters</span></li>
+          <li><span class="fk">Contests</span><span class="fv">Pure legal argument: how the law applies to facts that are already settled</span></li>
+          <li><span class="fk">Team size</span><span class="fv">Fixed pairs of two, under AMCA rules</span></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:26px;">Because the facts are already locked in, moot court isolates one skill and drills it hard: building a legal argument and defending it in real time. That skill happens to transfer well beyond courtrooms. Tech policy, compliance, and transactional work all reward the same ability to reason clearly under pressure.</p>
+
+    <div class="role-grid">
+      <div class="role-box">
+        <div class="idx">You could argue as the</div>
+        <h3>Petitioner</h3>
+        <p>Your goal is to convince the judges to reverse the lower court's ruling. You argue that the law was applied wrong, or that a right was violated. You go first, and save time for rebuttal.</p>
+      </div>
+      <div class="role-box">
+        <div class="idx">Or as the</div>
+        <h3>Respondent</h3>
+        <p>Your goal is to convince the judges to uphold the lower court's ruling. You argue the lower court followed the right standard and reached a fair outcome. You go second, answering the petitioner's claims directly.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="case">
     <div class="section-head">
-      <span class="section-num">III.</span>
+      <span class="section-num">V.</span>
       <h2>This Year's Case</h2>
     </div>
     <div class="case-card">
@@ -578,7 +821,7 @@
 
   <section id="tracks">
     <div class="section-head">
-      <span class="section-num">IV.</span>
+      <span class="section-num">VI.</span>
       <h2>How the Program Works</h2>
     </div>
     <p class="lede">Members train across three parallel tracks all semester, converging on the same case from three directions.</p>
@@ -586,7 +829,16 @@
       <div class="track">
         <div class="idx">Track one</div>
         <h3>GBM Curriculum</h3>
-        <p>General body meetings walk through the record, the circuit split, and the doctrine underneath both issues, building the shared knowledge every advocate needs before stepping up to argue.</p>
+        <p>General body meetings build the shared knowledge every advocate needs, session by session:</p>
+        <ol class="curriculum-list">
+          <li>Intro to moot court, plus a mini moot court to try it firsthand</li>
+          <li>The court system, and how the Supreme Court decides to grant cert</li>
+          <li>You be the justice: deciphering real judicial opinions</li>
+          <li>Applying precedent and constructing arguments like a student law firm</li>
+          <li>Judicial opinion writing and analyzing oral argument questions</li>
+          <li>Analyzing argument questions at an advanced level</li>
+          <li>Moot court is now in session: full demo rounds</li>
+        </ol>
       </div>
       <div class="track">
         <div class="idx">Track two</div>
@@ -603,10 +855,19 @@
 
   <section id="schedule">
     <div class="section-head">
-      <span class="section-num">V.</span>
-      <h2>Competition Schedule</h2>
+      <span class="section-num">VII.</span>
+      <h2>Path to Nationals</h2>
     </div>
-    <p class="lede">Our first AMCA season is anchored by the Eastern Regional, with additional rounds under consideration.</p>
+    <p class="lede">Every AMCA season follows the same path, and every team competes the same way: pairs of two, no more, no fewer.</p>
+    <div class="tourney-path">
+      <div class="tourney-step">Regional Tournament</div>
+      <span class="tourney-arrow">→</span>
+      <div class="tourney-step">PRONTs (Prelim Round of Nationals)</div>
+      <span class="tourney-arrow">→</span>
+      <div class="tourney-step">FRONT (Final Round of Nationals)</div>
+    </div>
+    <p style="margin-top:18px; font-size:0.92rem;">The top 25% of teams at each Regional move on to PRONTs. The top 8 teams from each PRONT move on to FRONT. Every hearing has at least two judges, and each speaker is scored 0 to 100 across four categories: knowledge of the subject, response to questioning, forensic skill, and organization, for 400 points possible per speaker.</p>
+    <p class="lede" style="margin-top:32px;">Our first AMCA season is anchored by the Eastern Regional, with additional rounds under consideration.</p>
     <div class="schedule">
       <div class="sched-row">
         <div class="sched-date">Nov 20–22</div>
@@ -628,7 +889,7 @@
 
   <section id="join">
     <div class="section-head">
-      <span class="section-num">VI.</span>
+      <span class="section-num">VIII.</span>
       <h2>Try Out</h2>
     </div>
     <div class="join-box">
@@ -648,18 +909,37 @@
         <li>Get placed on a competition or development track</li>
       </ul>
     </div>
+    <div class="tryout-table" style="border-top: 1px solid var(--rule); background: transparent;">
+      <p class="lede" style="margin-top:32px;">Moot court has one job: argue. Every competitor does the same thing in front of a judge panel, so tryouts test one thing well: can you think clearly under pressure and argue persuasively?</p>
+      <div class="tt-row tt-head" style="color: var(--ink); border-color: var(--rule);">
+        <div>What you'll do</div>
+        <div>What it tests</div>
+      </div>
+      <div class="tt-row" style="color: var(--text-soft); border-color: var(--rule);">
+        <div><strong>Prepared speech</strong>, about 2 minutes, on a topic given in advance</div>
+        <div>Presence, poise, and building an argument without getting interrupted</div>
+      </div>
+      <div class="tt-row" style="color: var(--text-soft); border-color: var(--rule);">
+        <div><strong>Cold Q&A</strong>, 2 to 3 minutes on a prompt you haven't seen</div>
+        <div>Thinking on your feet, staying composed when caught off guard</div>
+      </div>
+      <div class="tt-row" style="color: var(--text-soft); border-color: var(--rule);">
+        <div><strong>Mini oral argument</strong></div>
+        <div>All of the above at once, plus legal reasoning under real interruption</div>
+      </div>
+    </div>
   </section>
 
   <section id="officers">
     <div class="section-head">
-      <span class="section-num">VII.</span>
+      <span class="section-num">IX.</span>
       <h2>Officers</h2>
     </div>
     <div class="officers">
-      <div class="officer"><div class="name">Journey Darby</div><div class="role">President</div></div>
-      <div class="officer"><div class="name">Akshu Ashokkumar</div><div class="role">Vice President</div></div>
-      <div class="officer"><div class="name">Isla Abrams</div><div class="role">Co-Director of Oral Advocacy</div></div>
-      <div class="officer"><div class="name">Savera Baloch</div><div class="role">Co-Director of Oral Advocacy</div></div>
+      <div class="officer"><div class="name">Journey Darby</div><div class="role">Founding President</div></div>
+      <div class="officer"><div class="name">Akshu Ashokkumar</div><div class="role">Vice President · Brief Writing Co-Owner</div></div>
+      <div class="officer"><div class="name">Isla Abrams</div><div class="role">Director of Oral Advocacy</div></div>
+      <div class="officer"><div class="name">Savera Baloch</div><div class="role">Director of Oral Advocacy</div></div>
       <div class="officer"><div class="name">Hadley Courtenay</div><div class="role">Secretary</div></div>
       <div class="officer"><div class="name">Hyma Chadalawada</div><div class="role">Business Manager</div></div>
     </div>
