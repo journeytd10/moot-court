@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moot Court Society at Pitt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2A4A73;
+    --ink-soft:#345A8C;
+    --parchment:#FAF7EF;
+    --parchment-deep:#F0EADA;
+    --brass:#C89B2E;
+    --brass-light:#F7DD7E;
+    --oxblood:#4379B7;
+    --surface:#FFFFFF;
+    --text:#252930;
+    --text-soft:#5B6474;
+    --rule:rgba(42,74,115,0.16);
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Public Sans", -apple-system, sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--sans);
+    background: var(--parchment);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--parchment);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 32px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .nav-mark{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  .nav-mark img{
+    height: 34px;
+    width: auto;
+  }
+  .nav-mark span{color: var(--brass);}
+  .nav-links{
+    display:flex;
+    gap: 28px;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .nav-links a{
+    color: var(--text-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .nav-links a:hover{color: var(--ink); border-color: var(--brass);}
+  .nav-toggle{display:none;}
+
+  @media (max-width: 680px){
+    .nav-links{
+      display:none;
+    }
+    .nav-toggle{
+      display:block;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: none;
+      border: 1px solid var(--rule);
+      padding: 6px 12px;
+      border-radius: 2px;
+    }
+    .nav-links.open{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background: var(--surface);
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--rule);
+      gap: 16px;
+    }
+  }
+
+  /* ---------- HERO / CASE CAPTION ---------- */
+  .caption{
+    padding: 72px 32px 56px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .docket{
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--brass);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .caption-block{
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    padding: 40px 0;
+  }
+  .hero-block{
+    display:flex;
+    align-items:center;
+    gap: 44px;
+  }
+  .hero-logo{
+    flex: 0 0 auto;
+    width: 168px;
+    height: auto;
+  }
+  .hero-text{flex: 1;}
+  @media (max-width: 760px){
+    .hero-block{flex-direction: column; align-items:flex-start; gap: 24px;}
+    .hero-logo{width: 120px;}
+  }
+  .party{
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.08;
+    color: var(--ink);
+  }
+  .versus{
+    display:flex;
+    align-items:center;
+    gap: 20px;
+    margin: 14px 0;
+  }
+  .versus .v{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--brass);
+  }
+  .versus .line{
+    flex:1;
+    height:1px;
+    background: var(--rule);
+  }
+  .tagline{
+    margin-top: 24px;
+    font-size: 1.08rem;
+    color: var(--text-soft);
+    max-width: 60ch;
+  }
+  .hero-actions{
+    margin-top: 32px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding: 12px 24px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.92rem;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--surface);
+  }
+  .btn-primary:hover{background: var(--ink-soft);}
+  .btn-ghost{
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn-ghost:hover{background: rgba(28,37,48,0.06);}
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding: 64px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .section-num{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--brass);
+    font-size: 1.1rem;
+  }
+  h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.9rem;
+    color: var(--ink);
+  }
+  h3{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  p{color: var(--text-soft); max-width: 68ch;}
+  .lede{
+    font-size: 1.08rem;
+    max-width: 62ch;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  /* about grid */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+  }
+  .fact-list{
+    list-style:none;
+  }
+  .fact-list li{
+    display:flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 0.95rem;
+  }
+  .fact-list li:first-child{border-top:none;}
+  .fact-list .fk{
+    flex: 0 0 118px;
+    color: var(--brass);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    padding-top: 2px;
+  }
+  .fact-list .fv{color: var(--text);}
+
+  @media (max-width: 680px){
+    .about-grid{grid-template-columns: 1fr;}
+  }
+
+  /* current case */
+  .case-card{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 36px;
+  }
+  .case-cite{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--oxblood);
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+  .case-sub{
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-bottom: 22px;
+  }
+  .issue-list{
+    list-style:none;
+    display:grid;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .issue-list li{
+    padding-left: 20px;
+    border-left: 3px solid var(--brass-light);
+    font-size: 0.95rem;
+  }
+
+  .gbm-card{border-color: var(--ink); border-width: 1px;}
+  .gbm-when{
+    display:flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .gbm-date{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
+  .gbm-loc{
+    font-size: 1.02rem;
+    color: var(--brass);
+    font-weight: 600;
+    align-self: center;
+  }
+
+  /* tracks */
+  .tracks{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .track{
+    background: var(--surface);
+    padding: 28px;
+  }
+  .track .idx{
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--brass);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 680px){
+    .tracks{grid-template-columns: 1fr;}
+  }
+
+  /* schedule */
+  .schedule{
+    border-top: 1px solid var(--rule);
+  }
+  .sched-row{
+    display:grid;
+    grid-template-columns: 160px 1fr auto;
+    gap: 20px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sched-date{
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 0.98rem;
+  }
+  .sched-name{font-size: 0.98rem; color: var(--text);}
+  .sched-tag{
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--brass);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  @media (max-width: 680px){
+    .sched-row{grid-template-columns: 1fr; gap: 4px;}
+  }
+
+  /* join */
+  .join-box{
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 48px;
+    display:grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items:start;
+  }
+  .join-box h2{color: var(--surface);}
+  .join-box p{color: rgba(234,227,211,0.78);}
+  .join-steps{list-style:none; counter-reset: step;}
+  .join-steps li{
+    counter-increment: step;
+    display:flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(234,227,211,0.16);
+    font-size: 0.92rem;
+    color: rgba(234,227,211,0.9);
+  }
+  .join-steps li:first-child{border-top:none;}
+  .join-steps li::before{
+    content: counter(step);
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--brass-light);
+    flex: 0 0 auto;
+  }
+  .cap-note{
+    margin-top: 20px;
+    font-size: 0.82rem;
+    color: rgba(234,227,211,0.6);
+    border-left: 2px solid var(--brass-light);
+    padding-left: 12px;
+  }
+  @media (max-width: 680px){
+    .join-box{grid-template-columns: 1fr; padding: 32px 24px;}
+  }
+
+  /* officers */
+  .officers{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 40px;
+  }
+  .officer{
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .officer .name{
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1.02rem;
+  }
+  .officer .role{
+    font-size: 0.82rem;
+    color: var(--brass);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+  }
+  @media (max-width: 680px){
+    .officers{grid-template-columns: 1fr;}
+  }
+
+  /* footer */
+  footer{
+    padding: 40px 0 60px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap: 20px;
+  }
+  .footer-mark{
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+  .footer-meta{
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-mark"><img src="logo.png" alt="Moot Court Society logo"> at Pitt</div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">Menu</button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#first-gbm">First GBM</a>
+      <a href="#case">The Case</a>
+      <a href="#tracks">Program</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#join">Join</a>
+      <a href="#officers">Officers</a>
+      <a href="https://calendar.google.com/calendar/u/0?cid=MzViMzUxMDVhMmJmMjVjMmViZDZkMTc0MzMyMTYyZDQ0NTc2YjcwZDBlOWIxYTE5ODI4YzYwMTA0NTdmNDFiMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener">Calendar</a>
+    </div>
+  </div>
+</nav>
+
+<header class="caption">
+  <div class="docket">AMCA AFFILIATE CHAPTER · UNIVERSITY OF PITTSBURGH</div>
+  <div class="caption-block hero-block">
+    <img src="logo.png" alt="Moot Court Society at Pitt logo" class="hero-logo">
+    <div class="hero-text">
+      <div class="party">Moot Court Society</div>
+      <div class="versus">
+        <span class="v">at</span>
+        <div class="line"></div>
+      </div>
+      <div class="party">the University of Pittsburgh</div>
+      <p class="tagline">We build oral advocates and brief writers through competitive moot court, arguing the year's case in front of judges and each other before we ever argue it in a regional round.</p>
+      <div class="hero-actions">
+        <a href="#first-gbm" class="btn btn-primary">Come to our first GBM</a>
+        <a href="#case" class="btn btn-ghost">Read this year's case</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num">I.</span>
+      <h2>About the Society</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="lede">Moot Court Society at Pitt is an AMCA affiliate chapter where members research, brief, and argue a real appellate case each year. It's the same one competing schools across the country are arguing at regional tournaments.</p>
+        <p>Every member trains across three tracks at once: the substantive law behind the year's case, oral advocacy in front of a bench, and written brief construction. You don't need prior debate or mock trial experience. You need to be willing to get cross-examined by a judge and come back the next week having fixed your argument.</p>
+      </div>
+      <ul class="fact-list">
+        <li><span class="fk">Affiliation</span><span class="fv">AMCA (American Moot Court Association)</span></li>
+        <li><span class="fk">Faculty Advisor</span><span class="fv">Prof. Chris Bonneau, Political Science</span></li>
+        <li><span class="fk">Founded</span><span class="fv">Spring 2026</span></li>
+        <li><span class="fk">First season</span><span class="fv">Fall 2026, AMCA regional competition</span></li>
+        <li><span class="fk">Meets</span><span class="fv">Weekly GBM + track sessions</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="first-gbm">
+    <div class="section-head">
+      <span class="section-num">II.</span>
+      <h2>First GBM</h2>
+    </div>
+    <div class="case-card gbm-card">
+      <div class="gbm-when">
+        <div class="gbm-date">Wednesday, September 23 · 9:00 PM</div>
+        <div class="gbm-loc">David Lawrence Hall, Room 106</div>
+      </div>
+      <p class="lede" style="margin-top:22px;">Come find out what moot court actually is, meet the officer team, and get the case packet for tryouts. No experience or background in law required. Just show up.</p>
+      <h3 style="margin-top:8px;">What you'll be trained in</h3>
+      <ul class="issue-list">
+        <li><strong>Legal research and case analysis:</strong> reading a record, spotting the live issues, and building an argument on top of real doctrine.</li>
+        <li><strong>Oral advocacy:</strong> arguing in front of a bench, thinking on your feet, and holding your position under hostile questioning.</li>
+        <li><strong>Persuasive brief writing:</strong> structuring and citing a written argument the way an actual appellate brief is built.</li>
+        <li><strong>Cross-examination and judicial questioning:</strong> learning to answer, not deflect, when a judge tries to find the hole in your argument.</li>
+      </ul>
+      <p style="margin-top:18px;">Training and feedback come directly from <strong>Pitt Law School faculty, current Pitt Law students, and pre-law professors</strong>, not just peer critique.</p>
+      <div class="hero-actions" style="margin-top:26px;">
+        <a href="https://groupme.com/join_group/116573151/KtWlRdtU" class="btn btn-primary" target="_blank" rel="noopener">Join our GroupMe</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="case">
+    <div class="section-head">
+      <span class="section-num">III.</span>
+      <h2>This Year's Case</h2>
+    </div>
+    <div class="case-card">
+      <div class="case-cite">Bobby Bronner v. United States</div>
+      <div class="case-sub">Fall 2026 AMCA competition case</div>
+      <p>Our team is arguing a case at the intersection of Fourth Amendment search doctrine and executive power. It's the kind of dispute that shows up in real Article II litigation, not a hypothetical built for the classroom.</p>
+      <ul class="issue-list">
+        <li><strong>Issue I, Fourth Amendment:</strong> whether long-term, warrantless pole camera surveillance of a residence constitutes a search requiring a warrant.</li>
+        <li><strong>Issue II, Article II:</strong> the scope of executive authority to authorize that surveillance without judicial or legislative check.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="tracks">
+    <div class="section-head">
+      <span class="section-num">IV.</span>
+      <h2>How the Program Works</h2>
+    </div>
+    <p class="lede">Members train across three parallel tracks all semester, converging on the same case from three directions.</p>
+    <div class="tracks">
+      <div class="track">
+        <div class="idx">Track one</div>
+        <h3>GBM Curriculum</h3>
+        <p>General body meetings walk through the record, the circuit split, and the doctrine underneath both issues, building the shared knowledge every advocate needs before stepping up to argue.</p>
+      </div>
+      <div class="track">
+        <div class="idx">Track two</div>
+        <h3>Oral Advocacy</h3>
+        <p>Structured argument practice in front of a mock bench, with rounds of questioning designed to expose the soft spots in your position before a real judge finds them first.</p>
+      </div>
+      <div class="track">
+        <div class="idx">Track three</div>
+        <h3>Brief Writing</h3>
+        <p>Workshops on issue framing, record citation, and persuasive structure, building toward a competition-ready brief on both the Fourth Amendment and Article II questions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="section-head">
+      <span class="section-num">V.</span>
+      <h2>Competition Schedule</h2>
+    </div>
+    <p class="lede">Our first AMCA season is anchored by the Eastern Regional, with additional rounds under consideration.</p>
+    <div class="schedule">
+      <div class="sched-row">
+        <div class="sched-date">Nov 20–22</div>
+        <div class="sched-name">AMCA Eastern Regional, Fitchburg State University</div>
+        <div class="sched-tag">Anchor deadline</div>
+      </div>
+      <div class="sched-row">
+        <div class="sched-date">TBD</div>
+        <div class="sched-name">PRONT, Liberty University</div>
+        <div class="sched-tag">Under consideration</div>
+      </div>
+      <div class="sched-row">
+        <div class="sched-date">TBD</div>
+        <div class="sched-name">Windy City Invitational, Loyola Chicago</div>
+        <div class="sched-tag">Under consideration</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="section-head">
+      <span class="section-num">VI.</span>
+      <h2>Try Out</h2>
+    </div>
+    <div class="join-box">
+      <div>
+        <h2>Argue your way onto the team</h2>
+        <p>Tryouts are open to all Pitt students. No moot court, debate, or pre-law background required. You'll get the case materials in advance, argue in front of our officer bench, and get direct feedback either way.</p>
+        <div class="cap-note">The Eastern Regional caps competing teams at four per school, so our tryout bench is competitive by design. Bring your best argument, not your most polished résumé.</div>
+        <div class="hero-actions" style="margin-top:22px;">
+          <a href="https://groupme.com/join_group/116573151/KtWlRdtU" class="btn btn-ghost" style="border-color: var(--parchment); color: var(--parchment);" target="_blank" rel="noopener">All updates go out on GroupMe →</a>
+          <a href="https://calendar.google.com/calendar/u/0?cid=MzViMzUxMDVhMmJmMjVjMmViZDZkMTc0MzMyMTYyZDQ0NTc2YjcwZDBlOWIxYTE5ODI4YzYwMTA0NTdmNDFiMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" class="btn btn-ghost" style="border-color: var(--parchment); color: var(--parchment);" target="_blank" rel="noopener">Add our calendar →</a>
+        </div>
+      </div>
+      <ul class="join-steps">
+        <li>Get the case packet and issue summary</li>
+        <li>Prepare a short argument on one issue</li>
+        <li>Argue in front of the officer bench</li>
+        <li>Get placed on a competition or development track</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="officers">
+    <div class="section-head">
+      <span class="section-num">VII.</span>
+      <h2>Officers</h2>
+    </div>
+    <div class="officers">
+      <div class="officer"><div class="name">Journey Darby</div><div class="role">President</div></div>
+      <div class="officer"><div class="name">Akshu Ashokkumar</div><div class="role">Vice President</div></div>
+      <div class="officer"><div class="name">Isla Abrams</div><div class="role">Co-Director of Oral Advocacy</div></div>
+      <div class="officer"><div class="name">Savera Baloch</div><div class="role">Co-Director of Oral Advocacy</div></div>
+      <div class="officer"><div class="name">Hadley Courtenay</div><div class="role">Secretary</div></div>
+      <div class="officer"><div class="name">Hyma Chadalawada</div><div class="role">Business Manager</div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="footer-inner">
+    <div class="footer-mark">Moot Court Society at Pitt</div>
+    <div class="footer-meta">AMCA Affiliate Chapter<br>Faculty Advisor: Prof. Chris Bonneau</div>
+  </div>
+</footer>
+
+</body>
+</html>
